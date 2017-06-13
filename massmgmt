@@ -1,0 +1,14 @@
+#!/bin/bash
+#-------------------------------------------------------------------------------
+#                                massmgmt
+#                 launchd-based macOS desired-state management
+#                           Last Edited: 6/13/17
+#-------------------------------------------------------------------------------
+# define location of help page
+helpPage="/usr/local/massmgmt/help.txt"
+#----------list functions and packaged scripts that massmgmt can call-----------
+
+
+
+
+#-------------------------------------------------------------------------------
