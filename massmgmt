@@ -7,7 +7,7 @@
 # define location of help page
 helpPage="/usr/local/massmgmt/help.txt"
 #----------list functions and packaged scripts that massmgmt can call-----------
-
+#/usr/local/massmgmt/bin/chrome
 
 
 
