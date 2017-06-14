@@ -6,10 +6,11 @@
 # -----------------------------------------------------------------------------
 # variables
 adminUser="$(dscl . list /Users UniqueID | awk '$2 == 501 {print $1}')"
-sshCheck="$(sudo systemsetup getremotelogin | awk '/Remote/ {print $(3) }')"
 logFile="/Users/$adminUser/Library/Logs/massmgmt/enableSSHLog.txt"
 starDate="$(date)"
 hostName="$(hostname)"
+
+sshCheck="$(sudo systemsetup getremotelogin | awk '/Remote/ {print $(3) }')"
 # -----------------------------------------------------------------------------
 # Script Contents -------------------------------------------------------------
 if [ "$sshCheck" == "On" ] ; then
