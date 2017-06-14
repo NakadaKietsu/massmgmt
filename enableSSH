@@ -43,13 +43,13 @@ elif [ "$sshCheck" == "Off" ] ; then
         echo "$starDate --- No record was found for $adminUser" >> "$logFile"
     fi
 else
-     echo >> "$logFile"
-     echo "$starDate -- $hostName ----" >> "$logFile"
-     echo >> "$logFile"
-     echo "$starDate --- Failed, exiting" >> "$logFile"
-     echo >> "$logFile"
-     echo "$starDate -- $hostName ----" >> "$logFile"
-     exit
+    echo >> "$logFile"
+    echo "$starDate -- $hostName ----" >> "$logFile"
+    echo >> "$logFile"
+    echo "$starDate --- Failed, exiting" >> "$logFile"
+    echo >> "$logFile"
+    echo "$starDate -- $hostName ----" >> "$logFile"
+    exit
 fi
 exit
 # -----------------------------------------------------------------------------
