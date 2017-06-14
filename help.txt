@@ -13,4 +13,13 @@ stored in the locations recommended by Apple Inc.
 
 -----
 
+The massmgmt tool has logging built into the many scripts that are included. The
+log storage directory is /Users/<admin user>/Library/Logs/massmgmt/. Logs may also be
+flushed by entering the command:
 
+$ massmgmt flushLogs
+
+into a terminal window as the admin user.
+
+
+* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
