@@ -1,0 +1,15 @@
+#!/bin/sh
+# -----------------------------------------------------------------------------
+# enableARD (UNIX exec.)
+# enableARD arg
+# Last Edited: 3/24/17
+# -----------------------------------------------------------------------------
+# variables
+adminUser="$(dscl . list /Users UniqueID | awk '$2 == 501 {print $1}')"
+
+# -----------------------------------------------------------------------------
+privs="-DeleteFiles -ControlObserve -TextMessages -OpenQuitApps -GenerateReports -RestartShutDown -SendFiles -ChangeSettings"
+sudo /System/Library/CoreServices/RemoteManagement/ARDAgent.app/Contents/Resources/kickstart -activate -configure -allowAccessFor -specifiedUsers
+sudo /System/Library/CoreServices/RemoteManagement/ARDAgent.app/Contents/Resources/kickstart -configure -access -on -privs $privs -users $adminUser
+exit
+# -----------------------------------------------------------------------------
