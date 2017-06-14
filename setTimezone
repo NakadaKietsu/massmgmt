@@ -4,17 +4,43 @@
 # set timezone
 # Last Edited: 6/14/17
 # -----------------------------------------------------------------------------
-# variable
+# variables
+adminUser="$(dscl . list /Users UniqueID | awk '$2 == 501 {print $1}')"
+logFile="/Users/$adminUser/Library/Logs/massmgmt/setTimezoneLog.txt"
+starDate="$(date)"
+hostName="$(hostname)"
+
 timeZone="America/New_York"
 currentTimeZone="$(sudo /usr/sbin/systemsetup -gettimezone | awk '/Time Zone/ {print $(3) }')"
 # -----------------------------------------------------------------------------
 # Script Contents -------------------------------------------------------------
-if [ "$currentTimeZone" != "$timeZone" ] ; then
-    sudo /usr/sbin/systemsetup -settimezone "$timeZone"
-    /usr/bin/killall SystemUIServer
+if [ "$currentTimeZone" == "$timeZone" ] ; then
+    echo >> "$logFile"
+    echo "$starDate -- $hostName ----" >> "$logFile"
+    echo >> "$logFile"
+    echo "$starDate --- System timezone already set to $timeZone, exiting" >> "$logFile"
+    echo >> "$logFile"
+    echo "$starDate -- $hostName ----" >> "$logFile"
     exit
 else
+    echo >> "$logFile"
+    echo "$starDate -- $hostName ----" >> "$logFile"
+    echo >> "$logFile"
+    
+    echo "$starDate --- Setting timezone to $timeZone" >> "$logFile"
+    sudo /usr/sbin/systemsetup -settimezone "$timeZone" >> "$logFile"
+    /usr/bin/killall SystemUIServer >> "$logFile"
+    
+    echo "$starDate --- Timezone set to $timeZone, exiting" >> "$logFile"
+    echo >> "$logFile"
+    echo "$starDate -- $hostName ----" >> "$logFile"
     exit
 fi
+echo >> "$logFile"
+echo "$starDate -- $hostName ----" >> "$logFile"
+echo >> "$logFile"
+echo "$starDate --- Failed, exiting" >> "$logFile"
+echo >> "$logFile"
+echo "$starDate -- $hostName ----" >> "$logFile"
 exit
 # -----------------------------------------------------------------------------
