@@ -7,24 +7,31 @@
 # variables
 adminUser="$(dscl . list /Users UniqueID | awk '$2 == 501 {print $1}')"
 logDir="/Users/$adminUser/Library/Logs/massmgmt"
-
+# -----------------------------------------------------------------------------
+# Script Contents -------------------------------------------------------------
 # make directories
 mkdir /usr/local/massmgmt
 mkdir /usr/local/massmgmt/bin
 mkdir /usr/local/massmgmt/sbin
 mkdir "$logDir"
 
-# /usr/local/massmgmt/bin ---------------------
+# /usr/local/massmgmt/ ------------------------
 cd /tmp/massmgmt
-cp chrome /usr/local/massmgmt/bin
-cp enableSSH /usr/local/massmgmt/bin
-cp enableARD /usr/local/massmgmt/bin
-cp setHostname /usr/local/massmgmt/bin
-cp setTimezone /usr/local/massmgmt/bin
+cp massmgmt /usr/local/massmgmt
+
+# /usr/local/massmgmt/bin ---------------------
+copyLoc="/usr/local/massmgmt/bin"
+cd /tmp/massmgmt
+cp chrome "$copyLoc"
+cp enableSSH "$copyLoc"
+cp enableARD "$copyLoc"
+cp setHostname "$copyLoc"
+cp setTimezone "$copyLoc"
 
 # /usr/local/massmgmt/sbin --------------------
+copyLoc="/usr/local/massmgmt/sbin"
 cd /tmp/massmgmt
-cp $file1 /usr/local/massmgmt/sbin
+cp $file1 "$copyLoc"
 
 # sudo chmod ----------------------------------
 cd /usr/local/massmgmt/bin
