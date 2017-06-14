@@ -12,7 +12,8 @@ mkdir /usr/local/massmgmt/sbin
 # /usr/local/massmgmt/bin ---------------------
 cd /tmp/massmgmt
 cp chrome /usr/local/massmgmt/bin
-
+cp enableSSH /usr/local/massmgmt/bin
+cp enableARD /usr/local/massmgmt/bin
 
 # /usr/local/massmgmt/sbin --------------------
 cd /tmp/massmgmt
@@ -21,6 +22,8 @@ cp $file1 /usr/local/massmgmt/sbin
 # sudo chmod ----------------------------------
 cd /usr/local/massmgmt/bin
 sudo chmod +x chrome
+sudo chmod +x enableSSH
+sudo chmod +x enableARD
 
 cd /usr/local/massmgmt/sbin
 
