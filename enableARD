@@ -6,10 +6,25 @@
 # -----------------------------------------------------------------------------
 # variables
 adminUser="$(dscl . list /Users UniqueID | awk '$2 == 501 {print $1}')"
-
+logFile="/Users/$adminUser/Library/Logs/massmgmt/enableARDLog.txt"
+starDate="$(date)"
+hostName="$(hostname)"
 # -----------------------------------------------------------------------------
+echo >> "$logFile"
+echo "$starDate -- $hostName ----" >> "$logFile"
+echo >> "$logFile"
+
 privs="-DeleteFiles -ControlObserve -TextMessages -OpenQuitApps -GenerateReports -RestartShutDown -SendFiles -ChangeSettings"
-sudo /System/Library/CoreServices/RemoteManagement/ARDAgent.app/Contents/Resources/kickstart -activate -configure -allowAccessFor -specifiedUsers
-sudo /System/Library/CoreServices/RemoteManagement/ARDAgent.app/Contents/Resources/kickstart -configure -access -on -privs $privs -users $adminUser
+
+echo "$starDate --- $privs" >> "$logFile"
+echo "$starDate --- Kickstarting ARD..." >> "$logFile"
+
+sudo /System/Library/CoreServices/RemoteManagement/ARDAgent.app/Contents/Resources/kickstart -activate -configure -allowAccessFor -specifiedUsers >> "$logFile"
+echo "$starDate --- giving $adminUser correct privileges ..." >> "$logFile"
+
+sudo /System/Library/CoreServices/RemoteManagement/ARDAgent.app/Contents/Resources/kickstart -configure -access -on -privs $privs -users $adminUser >> "$logFile"
+echo >> "$logFile"
+echo >> "$logFile"
+echo "starDate -- $hostName ----" >> "$logFile"
 exit
 # -----------------------------------------------------------------------------
