@@ -4,11 +4,40 @@
 # set Hostname
 # Last Edited: 6/14/17
 # -----------------------------------------------------------------------------
+# variables
+hostName="$(hostname)"
+adminUser="$(dscl . list /Users UniqueID | awk '$2 == 501 {print $1}')"
+starDate="$(date)"
+logFile="/Users/$adminUser/Library/Logs/massmgmt/setHostnameLog.txt"
 
 serial="$(/usr/sbin/system_profiler SPHardwareDataType | /usr/bin/awk '/Serial\ Number\ \(system\)/ {print $NF}')"
-
-sudo scutil --set ComputerName $serial
-sudo scutil --set HostName $serial
-sudo scutil --set LocalHostName $serial
+# -----------------------------------------------------------------------------
+# Script Contents -------------------------------------------------------------
+if [ "$hostName" == "$serial" ] ; then
+    echo >> "$logFile"
+    echo "$starDate -- $hostName ----" >> "$logFile"
+    echo >> "$logFile"
+    echo "$starDate --- The computer hostname is set to its serial number, exiting" >> "$logFile"
+    echo >> "$logFile"
+    echo "$starDate -- $hostName ----" >> "$logFile"
+else
+    echo >> "$logFile"
+    echo "$starDate -- $hostName ----" >> "$logFile"
+    echo >> "$logFile"
+    
+    sudo scutil --set ComputerName $serial >> "$logFile"
+    sudo scutil --set HostName $serial >> "$logFile"
+    sudo scutil --set LocalHostName $serial >> "$logFile"
+    
+    echo "$starDate --- Computer hostname set to $serial, exiting" >> "$logFile"
+    echo >> "$logFile"
+    echo "$starDate -- $hostName ----" >> "$logFile"
+fi
+echo >> "$logFile"
+echo "$starDate -- $hostName ----" >> "$logFile"
+echo >> "$logFile"
+echo "$starDate --- Failed, exiting" >> "$logFile"
+echo >> "$logFile"
+echo "$starDate -- $hostName ----" >> "$logFile"
 exit
 # -----------------------------------------------------------------------------
