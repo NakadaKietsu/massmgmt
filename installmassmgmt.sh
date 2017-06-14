@@ -9,6 +9,7 @@ adminUser="$(dscl . list /Users UniqueID | awk '$2 == 501 {print $1}')"
 logDir="/Users/$adminUser/Library/Logs/massmgmt"
 # -----------------------------------------------------------------------------
 # Script Contents -------------------------------------------------------------
+
 # make directories
 mkdir /usr/local/massmgmt
 mkdir /usr/local/massmgmt/bin
@@ -47,6 +48,8 @@ cd /usr/local/massmgmt/sbin
 cd /usr/local/massmgmt/bin
 
 cd /usr/local/massmgmt/sbin
+
+# move daemon into place
 
 # create alias to be able to run massmgmt from the command line
 ln -s '/usr/local/massmgmt/massmgmt' '/usr/local/bin/'
