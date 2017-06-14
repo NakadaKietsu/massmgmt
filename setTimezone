@@ -1,0 +1,20 @@
+#!/bin/bash
+# -----------------------------------------------------------------------------
+# setTime (UNIX exec.)
+# set timezone
+# Last Edited: 6/14/17
+# -----------------------------------------------------------------------------
+# variable
+timeZone="America/New_York"
+currentTimeZone="$(sudo /usr/sbin/systemsetup -gettimezone | awk '/Time Zone/ {print $(3) }')"
+# -----------------------------------------------------------------------------
+# Script Contents -------------------------------------------------------------
+if [ "$currentTimeZone" != "$timeZone" ] ; then
+    sudo /usr/sbin/systemsetup -settimezone "$timeZone"
+    /usr/bin/killall SystemUIServer
+    exit
+else
+    exit
+fi
+exit
+# -----------------------------------------------------------------------------
