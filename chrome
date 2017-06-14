@@ -5,17 +5,30 @@
 # Last Edited: 3/28/17
 # -----------------------------------------------------------------------------
 # variables
+adminUser="$(dscl . list /Users UniqueID | awk '$2 == 501 {print $1}')"
+logFile="/Users/$adminUser/Library/Logs/massmgmt/chromeLog.txt"
+starDate="$(date)"
+hostName="$(hostname)"
+
 dmgfile="googlechrome.dmg"
 volname="Google Chrome"
 url='https://dl.google.com/chrome/mac/stable/GGRO/googlechrome.dmg'
 
 # -----------------------------------------------------------------------------
-echo "Installing/updating Google Chrome"
-/usr/bin/curl -s -o /tmp/$dmgfile $url
-/usr/bin/hdiutil attach /tmp/$dmgfile -nobrowse -quiet
-sudo ditto -rsrc "/Volumes/$volname/Google Chrome.app" "/Applications/Google Chrome.app"
-/usr/bin/hdiutil detach $(/bin/df | /usr/bin/grep "$volname" | awk '{print $1}') -quiet
-/bin/rm /tmp/"$dmgfile"
-echo "Google Chrome installed/updated"
+# Script Contents ------------------------------------------------------------
+echo >> "$logFile"
+echo "$starDate -- $hostName ----" >> "$logFile"
+echo >> "$logFile"
+echo "$starDate --- Installing/updating Google Chrome" >> "$logFile"
+
+/usr/bin/curl -s -o /tmp/$dmgfile $url >> "$logFile"
+/usr/bin/hdiutil attach /tmp/$dmgfile -nobrowse -quiet >> "$logFile"
+sudo ditto -rsrc "/Volumes/$volname/Google Chrome.app" "/Applications/Google Chrome.app" >> "$logFile"
+/usr/bin/hdiutil detach $(/bin/df | /usr/bin/grep "$volname" | awk '{print $1}') -quiet >> "$logFile"
+/bin/rm /tmp/"$dmgfile" >> "$logFile"
+
+echo "$starDate --- Google Chrome installed/updated, exiting" >> "$logFile"
+echo >> "$logFile"
+echo "$starDate -- $hostName ----" >> "$logFile"
 exit
 # -----------------------------------------------------------------------------
