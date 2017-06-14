@@ -14,6 +14,7 @@ cd /tmp/massmgmt
 cp chrome /usr/local/massmgmt/bin
 cp enableSSH /usr/local/massmgmt/bin
 cp enableARD /usr/local/massmgmt/bin
+cp setHostname /usr/local/massmgmt/bin
 
 # /usr/local/massmgmt/sbin --------------------
 cd /tmp/massmgmt
@@ -24,6 +25,7 @@ cd /usr/local/massmgmt/bin
 sudo chmod +x chrome
 sudo chmod +x enableSSH
 sudo chmod +x enableARD
+sudo chmod +x setHostname
 
 cd /usr/local/massmgmt/sbin
 
