@@ -11,7 +11,7 @@ mkdir /usr/local/massmgmt/sbin
 
 # /usr/local/massmgmt/bin ---------------------
 cd /tmp/massmgmt
-cp $file /usr/local/massmgmt/bin
+cp chrome /usr/local/massmgmt/bin
 
 
 # /usr/local/massmgmt/sbin --------------------
