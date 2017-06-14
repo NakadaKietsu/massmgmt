@@ -1,7 +1,7 @@
 * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-                                   massmgmt
-                              Last Edited: 6/13/17
-                                  Version 0.1
+*                                   massmgmt                                      *
+*                              Last Edited: 6/13/17                               *
+*                                  Version 0.1                                    *
 * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 
 The massmgmt suite runs off of launch daemons controlled by the Apple Inc. service
