@@ -47,6 +47,8 @@ else
      echo "$starDate -- $hostName ----" >> "$logFile"
      echo >> "$logFile"
      echo "$starDate --- Failed, exiting" >> "$logFile"
+     echo >> "$logFile"
+     echo "$starDate -- $hostName ----" >> "$logFile"
      exit
 fi
 exit
