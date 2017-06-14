@@ -18,6 +18,16 @@ cp $file /usr/local/massmgmt/bin
 cd /tmp/massmgmt
 cp $file1 /usr/local/massmgmt/sbin
 
+# sudo chmod ----------------------------------
+cd /usr/local/massmgmt/bin
+
+cd /usr/local/massmgmt/sbin
+
+# chmod ---------------------------------------
+cd /usr/local/massmgmt/bin
+
+cd /usr/local/massmgmt/sbin
+
 # create alias to be able to run massmgmt from the command line
 ln -s '/usr/local/massmgmt/massmgmt' '/usr/local/bin/'
 exit
