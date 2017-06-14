@@ -17,5 +17,12 @@ logDir="/Users/$adminUser/Library/Logs/massmgmt"
 #/usr/local/massmgmt/bin/enableSSH
 #/usr/local/massmgmt/bin/setHostname
 #/usr/local/massmgmt/bin/setTimezone
-
+#-------------------------------------------------------------------------------
+/usr/local/massmgmt/bin/autoUpdate
+/usr/local/massmgmt/bin/chrome
+/usr/local/massmgmt/bin/enableARD
+/usr/local/massmgmt/bin/enableSSH
+/usr/local/massmgmt/bin/setHostname
+/usr/local/massmgmt/bin/setTimezone
+exit
 #-------------------------------------------------------------------------------
