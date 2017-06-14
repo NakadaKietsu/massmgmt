@@ -9,6 +9,7 @@ adminUser="$(dscl . list /Users UniqueID | awk '$2 == 501 {print $1}')"
 logFile="/Users/$adminUser/Library/Logs/massmgmt/enableARDLog.txt"
 starDate="$(date)"
 hostName="$(hostname)"
+
 lineTemplate="com.apple.RemoteDesktop.agent"
 ARD="$(launchctl list | grep '^\d.*RemoteDesktop.*')"
 Agent="$(echo $ARD | awk '/com.apple.RemoteDesktop.agent/ {print $(NF) }')"
