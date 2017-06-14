@@ -1,0 +1,14 @@
+#!/bin/bash
+# -----------------------------------------------------------------------------
+# setName (UNIX exec.)
+# set Hostname
+# Last Edited: 6/14/17
+# -----------------------------------------------------------------------------
+
+serial="$(/usr/sbin/system_profiler SPHardwareDataType | /usr/bin/awk '/Serial\ Number\ \(system\)/ {print $NF}')"
+
+sudo scutil --set ComputerName $serial
+sudo scutil --set HostName $serial
+sudo scutil --set LocalHostName $serial
+exit
+# -----------------------------------------------------------------------------
