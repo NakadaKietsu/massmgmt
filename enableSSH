@@ -4,32 +4,48 @@
 # enables ssh for $adminUser
 # Last Edited: 6/14/17
 # -----------------------------------------------------------------------------
-
+# variables
 adminUser="$(dscl . list /Users UniqueID | awk '$2 == 501 {print $1}')"
 sshCheck="$(sudo systemsetup getremotelogin | awk '/Remote/ {print $(3) }')"
-
+logFile="/Users/$adminUser/Library/Logs/massmgmt/enableSSHLog.txt"
+starDate="$(date)"
+hostName="$(hostname)"
 # -----------------------------------------------------------------------------
 # Script Contents -------------------------------------------------------------
 if [ "$sshCheck" == "On" ] ; then
+    echo >> "$logFile"
+    echo "$starDate -- $hostName ----" >> "$logFile"
+    echo "$starDate --- SSH was already set to --> On" >> "$logFile"
+    echo "Exiting" >> "$logFile"
     exit
 elif [ "$sshCheck" == "Off" ] ; then
-  
+    echo >> "$logFile"
+    echo "$starDate -- $hostName ----" >> "$logFile"
+    echo "$starDate --- SSH --> Off" >> "$logFile"
     userID="$(/usr/bin/dscl localhost -read /Local/Default/Users/$targetUsername | grep GeneratedUID | awk '{print $2}')"
-  
     if [ "$userID" != "" ];then
-        echo "Granting SSH Access for $targetUsername with GUID $userID"
-        sudo /usr/bin/dscl localhost -create /Local/Default/Groups/com.apple.access_ssh
-        sudo /usr/bin/dscl localhost -append /Local/Default/Groups/com.apple.access_ssh GroupMembership "$adminUser"
-        sudo /usr/bin/dscl localhost -append /Local/Default/Groups/com.apple.access_ssh GroupMembers "$userID"
-        sudo /usr/bin/dscl localhost -append /Local/Default/Groups/com.apple.access_ssh RealName 'Remote Login Group'
-        sudo /usr/bin/dscl localhost -append /Local/Default/Groups/com.apple.access_ssh PrimaryGroupID 104
-        sudo systemsetup setremotelogin on
+        echo "$starDate --- Granting SSH Access for $targetUsername with GUID $userID" >> "$logFile"
+        sudo /usr/bin/dscl localhost -create /Local/Default/Groups/com.apple.access_ssh >>"$logFile"
+        sudo /usr/bin/dscl localhost -append /Local/Default/Groups/com.apple.access_ssh GroupMembership "$adminUser" >> "$logFile"
+        sudo /usr/bin/dscl localhost -append /Local/Default/Groups/com.apple.access_ssh GroupMembers "$userID" >> "$logFile"
+        sudo /usr/bin/dscl localhost -append /Local/Default/Groups/com.apple.access_ssh RealName 'Remote Login Group' >> "$logFile"
+        sudo /usr/bin/dscl localhost -append /Local/Default/Groups/com.apple.access_ssh PrimaryGroupID 104 >> "$logFile"
+        sudo systemsetup setremotelogin on >> "$logFile"
+        echo "$starDate --- SSH set --> On" >> "$logFile"
+        echo "Exiting" >> "$logFile"
+        echo >> "$logFile"
+        echo "$starDate -- $hostName ----" >> "$logFile"
         exit
     else
-        echo "No record was found for $adminUser"
+        echo >> "$logFile"
+        echo "$starDate -- $hostName ----" >> "$logFile"
+        echo "$starDate --- No record was found for $adminUser" >> "$logFile"
     fi
 else
-        exit
+     echo >> "$logFile"
+     echo "$starDate -- $hostName ----" >> "$logFile"
+     echo "$starDate --- Failed, exiting" >> "$logFile"
+     exit
 fi
 exit
 # -----------------------------------------------------------------------------
