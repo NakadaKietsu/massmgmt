@@ -20,6 +20,7 @@ cp $file1 /usr/local/massmgmt/sbin
 
 # sudo chmod ----------------------------------
 cd /usr/local/massmgmt/bin
+sudo chmod +x chrome
 
 cd /usr/local/massmgmt/sbin
 
