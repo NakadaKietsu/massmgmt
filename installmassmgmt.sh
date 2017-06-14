@@ -15,6 +15,7 @@ cp chrome /usr/local/massmgmt/bin
 cp enableSSH /usr/local/massmgmt/bin
 cp enableARD /usr/local/massmgmt/bin
 cp setHostname /usr/local/massmgmt/bin
+cp setTimezone /usr/local/massmgmt/bin
 
 # /usr/local/massmgmt/sbin --------------------
 cd /tmp/massmgmt
@@ -26,6 +27,7 @@ sudo chmod +x chrome
 sudo chmod +x enableSSH
 sudo chmod +x enableARD
 sudo chmod +x setHostname
+sudo chmod +x setTimezone
 
 cd /usr/local/massmgmt/sbin
 
