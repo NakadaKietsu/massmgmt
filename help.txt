@@ -19,7 +19,10 @@ flushed by entering the command:
 
 $ massmgmt flushLogs
 
-into a terminal window as the admin user.
+when logged in as the UID=501 admin user.
 
+The main directory for storing scripts is /usr/local/massmgmt/bin. Additional
+scripts are located in /usr/local/massmgmt/sbin. The help documentation and main
+script called be the LaunchDaemon are located in /usr/local/massmgmt/.
 
 * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
