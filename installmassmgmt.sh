@@ -18,7 +18,7 @@ mkdir "$logDir"
 
 # /usr/local/massmgmt/ ------------------------
 cd /tmp/massmgmt
-cp massmgmt /usr/local/massmgmt
+cp massmgmt /usr/local/massmgmt/
 
 # /usr/local/massmgmt/bin ---------------------
 copyLoc="/usr/local/massmgmt/bin"
@@ -52,6 +52,7 @@ cd /usr/local/massmgmt/bin
 cd /usr/local/massmgmt/sbin
 
 # move daemon into place
+cp org.massmgmt.rsu57 /Library/LaunchDaemons
 
 # create alias to be able to run massmgmt from the command line
 ln -s '/usr/local/massmgmt/massmgmt' '/usr/local/bin/'
