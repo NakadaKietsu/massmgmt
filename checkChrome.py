@@ -7,9 +7,8 @@ import plistlib
 #-------------------------------------------------------------------------------
 url = 'http://omahaproxy.appspot.com/all.json'
 resp = urllib2.urlopen(url)
-
 data = json.loads(resp.read())
-
+#-------------------------------------------------------------------------------
 for each in data:
     if each.get("os") == "mac":
         versions = each.get("versions")
