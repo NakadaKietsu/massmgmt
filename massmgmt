@@ -25,7 +25,7 @@ binLoc="/usr/local/massmgmt/bin"
 #/usr/local/massmgmt/bin/setTimezone
 #-------------------------------------------------------------------------------
 if [ "$1" == "flushLogs" ] ; then
-    rm -rf $logDir
+    rm -rf "$logDir"
     mkdir "$logDir"
 else
     $binLoc/autoUpdate
