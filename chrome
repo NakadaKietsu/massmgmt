@@ -1,0 +1,21 @@
+#!/bin/bash
+# -----------------------------------------------------------------------------
+# chrome (UNIX exec.)
+# update/install Google Chrome
+# Last Edited: 3/28/17
+# -----------------------------------------------------------------------------
+# variables
+dmgfile="googlechrome.dmg"
+volname="Google Chrome"
+url='https://dl.google.com/chrome/mac/stable/GGRO/googlechrome.dmg'
+
+# -----------------------------------------------------------------------------
+echo "Installing/updating Google Chrome"
+/usr/bin/curl -s -o /tmp/$dmgfile $url
+/usr/bin/hdiutil attach /tmp/$dmgfile -nobrowse -quiet
+sudo ditto -rsrc "/Volumes/$volname/Google Chrome.app" "/Applications/Google Chrome.app"
+/usr/bin/hdiutil detach $(/bin/df | /usr/bin/grep "$volname" | awk '{print $1}') -quiet
+/bin/rm /tmp/"$dmgfile"
+echo "Google Chrome installed/updated"
+exit
+# -----------------------------------------------------------------------------
