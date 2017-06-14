@@ -1,0 +1,35 @@
+#!/bin/bash
+# -----------------------------------------------------------------------------
+# enableSSH (UNIX exec.)
+# enables ssh for $adminUser
+# Last Edited: 6/14/17
+# -----------------------------------------------------------------------------
+
+adminUser="$(dscl . list /Users UniqueID | awk '$2 == 501 {print $1}')"
+sshCheck="$(sudo systemsetup getremotelogin | awk '/Remote/ {print $(3) }')"
+
+# -----------------------------------------------------------------------------
+# Script Contents -------------------------------------------------------------
+if [ "$sshCheck" == "On" ] ; then
+    exit
+elif [ "$sshCheck" == "Off" ] ; then
+  
+    userID="$(/usr/bin/dscl localhost -read /Local/Default/Users/$targetUsername | grep GeneratedUID | awk '{print $2}')"
+  
+    if [ "$userID" != "" ];then
+        echo "Granting SSH Access for $targetUsername with GUID $userID"
+        sudo /usr/bin/dscl localhost -create /Local/Default/Groups/com.apple.access_ssh
+        sudo /usr/bin/dscl localhost -append /Local/Default/Groups/com.apple.access_ssh GroupMembership "$adminUser"
+        sudo /usr/bin/dscl localhost -append /Local/Default/Groups/com.apple.access_ssh GroupMembers "$userID"
+        sudo /usr/bin/dscl localhost -append /Local/Default/Groups/com.apple.access_ssh RealName 'Remote Login Group'
+        sudo /usr/bin/dscl localhost -append /Local/Default/Groups/com.apple.access_ssh PrimaryGroupID 104
+        sudo systemsetup setremotelogin on
+        exit
+    else
+        echo "No record was found for $adminUser"
+    fi
+else
+        exit
+fi
+exit
+# -----------------------------------------------------------------------------
