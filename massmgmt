@@ -10,6 +10,8 @@ adminUser="$(dscl . list /Users UniqueID | awk '$2 == 501 {print $1}')"
 helpPage="/usr/local/massmgmt/help.txt"
 # define log location
 logDir="/Users/$adminUser/Library/Logs/massmgmt"
+# define bin location for scripts
+binLoc="/usr/local/massmgmt/bin"
 #----------list functions and packaged scripts that massmgmt can call-----------
 #/usr/local/massmgmt/bin/autoUpdate
 #/usr/local/massmgmt/bin/chrome
@@ -18,11 +20,16 @@ logDir="/Users/$adminUser/Library/Logs/massmgmt"
 #/usr/local/massmgmt/bin/setHostname
 #/usr/local/massmgmt/bin/setTimezone
 #-------------------------------------------------------------------------------
-/usr/local/massmgmt/bin/autoUpdate
-/usr/local/massmgmt/bin/chrome
-/usr/local/massmgmt/bin/enableARD
-/usr/local/massmgmt/bin/enableSSH
-/usr/local/massmgmt/bin/setHostname
-/usr/local/massmgmt/bin/setTimezone
+if [ "$1" == "flushLogs" ] ; then
+    rm -rf $logDir
+    mkdir "$logDir"
+else
+    $binLoc/autoUpdate
+    $binLoc/chrome
+    $binLoc/enableARD
+    $binLoc/enableSSH
+    $binLoc/setHostname
+    $binLoc/setTimezone
+fi
 exit
 #-------------------------------------------------------------------------------
