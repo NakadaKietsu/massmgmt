@@ -44,6 +44,7 @@ elif [ "$sshCheck" == "Off" ] ; then
 else
      echo >> "$logFile"
      echo "$starDate -- $hostName ----" >> "$logFile"
+     echo >> "$logFile"
      echo "$starDate --- Failed, exiting" >> "$logFile"
      exit
 fi
