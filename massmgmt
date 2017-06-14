@@ -11,8 +11,11 @@ helpPage="/usr/local/massmgmt/help.txt"
 # define log location
 logDir="/Users/$adminUser/Library/Logs/massmgmt"
 #----------list functions and packaged scripts that massmgmt can call-----------
+#/usr/local/massmgmt/bin/autoUpdate
 #/usr/local/massmgmt/bin/chrome
-
-
+#/usr/local/massmgmt/bin/enableARD
+#/usr/local/massmgmt/bin/enableSSH
+#/usr/local/massmgmt/bin/setHostname
+#/usr/local/massmgmt/bin/setTimezone
 
 #-------------------------------------------------------------------------------
