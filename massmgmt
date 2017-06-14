@@ -1,9 +1,9 @@
 #!/bin/bash
-#-------------------------------------------------------------------------------
+# -----------------------------------------------------------------------------
 #                                massmgmt
 #                 launchd-based macOS desired-state management
 #                           Last Edited: 6/13/17
-#-------------------------------------------------------------------------------
+# -----------------------------------------------------------------------------
 # define admin user
 adminUser="$(dscl . list /Users UniqueID | awk '$2 == 501 {print $1}')"
 
@@ -16,14 +16,14 @@ logDir="/Users/$adminUser/Library/Logs/massmgmt"
 # define bin location for scripts
 binLoc="/usr/local/massmgmt/bin"
 
-#----------list functions and packaged scripts that massmgmt can call-----------
+# ----------list functions and packaged scripts that massmgmt can call---------
 #/usr/local/massmgmt/bin/autoUpdate
 #/usr/local/massmgmt/bin/chrome
 #/usr/local/massmgmt/bin/enableARD
 #/usr/local/massmgmt/bin/enableSSH
 #/usr/local/massmgmt/bin/setHostname
 #/usr/local/massmgmt/bin/setTimezone
-#-------------------------------------------------------------------------------
+# -----------------------------------------------------------------------------
 if [ "$1" == "flushLogs" ] ; then
     rm -rf "$logDir"
     mkdir "$logDir"
@@ -36,4 +36,4 @@ else
     $binLoc/setTimezone
 fi
 exit
-#-------------------------------------------------------------------------------
+# -----------------------------------------------------------------------------
