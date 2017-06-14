@@ -23,6 +23,7 @@ cp massmgmt /usr/local/massmgmt
 # /usr/local/massmgmt/bin ---------------------
 copyLoc="/usr/local/massmgmt/bin"
 cd /tmp/massmgmt
+cp autoUpdate "$copyLoc"
 cp chrome "$copyLoc"
 cp enableSSH "$copyLoc"
 cp enableARD "$copyLoc"
@@ -36,6 +37,7 @@ cp $file1 "$copyLoc"
 
 # sudo chmod ----------------------------------
 cd /usr/local/massmgmt/bin
+sudo chmod +x autoUpdate
 sudo chmod +x chrome
 sudo chmod +x enableSSH
 sudo chmod +x enableARD
