@@ -4,10 +4,15 @@
 # install the components of the massmgmt suite in the correct locations
 # Last Edited: 6/13/17
 # -----------------------------------------------------------------------------
+# variables
+adminUser="$(dscl . list /Users UniqueID | awk '$2 == 501 {print $1}')"
+logDir="/Users/$adminUser/Library/Logs/massmgmt"
+
 # make directories
 mkdir /usr/local/massmgmt
 mkdir /usr/local/massmgmt/bin
 mkdir /usr/local/massmgmt/sbin
+mkdir "$logDir"
 
 # /usr/local/massmgmt/bin ---------------------
 cd /tmp/massmgmt
