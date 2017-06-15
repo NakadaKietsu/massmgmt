@@ -40,6 +40,7 @@ cp enableSSH "$copyLoc" >> "$logFile"
 cp enableARD "$copyLoc" >> "$logFile"
 cp setHostname "$copyLoc" >> "$logFile"
 cp setTimezone "$copyLoc" >> "$logFile"
+cp checkChrome.py "$copyLoc" >> "$logFile"
 
 # sudo chmod ----------------------------------
 cd /usr/local/massmgmt/bin
@@ -50,6 +51,7 @@ sudo chmod +x enableSSH >> "$logFile"
 sudo chmod +x enableARD >> "$logFile"
 sudo chmod +x setHostname >> "$logFile"
 sudo chmod +x setTimezone >> "$logFile"
+chmod +x checkChrome.py >> "$logFile"
 
 # move daemon into place
 echo "Moving daemon into /Library/LaunchDaemons" >> "$logFile"
