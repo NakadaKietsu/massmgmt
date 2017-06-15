@@ -56,8 +56,8 @@ else
     echo "$starDate --- Running autoUpdate" >> "$logFile"
     $binLoc/autoUpdate
     # run chrome update script
-    echo "$starDate --- Running chrome" >> "$logFile"
-    $binLoc/chrome
+    echo "$starDate --- Running check chrome" >> "$logFile"
+    $binLoc/checkChrome.py
     # run enableARD script
     echo "$starDate --- Running enableARD" >> "$logFile"
     $binLoc/enableARD
