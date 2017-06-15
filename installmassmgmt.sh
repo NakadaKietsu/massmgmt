@@ -2,7 +2,7 @@
 # -----------------------------------------------------------------------------
 # installmassmgmt.sh
 # install the components of the massmgmt suite in the correct locations
-# Last Edited: 6/13/17
+# Last Edited: 6/15/17
 # -----------------------------------------------------------------------------
 # variables
 adminUser="$(dscl . list /Users UniqueID | awk '$2 == 501 {print $1}')"
@@ -70,5 +70,7 @@ sudo cp /tmp/massmgmt/org.massmgmt.plist /Library/LaunchDaemons >> "$logFile"
 
 # create alias to be able to run massmgmt from the command line
 ln -s '/usr/local/massmgmt/massmgmt' '/usr/local/bin/' >> "$logFile"
+echo >> "$logFile"
+echo "$starDate -- $hostName ----" >> "$logFile"
 exit
 # -----------------------------------------------------------------------------
