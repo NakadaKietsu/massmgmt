@@ -2,7 +2,7 @@
 # -----------------------------------------------------------------------------
 # enableARD (UNIX exec.)
 # enableARD arg
-# Last Edited: 3/24/17
+# Last Edited: 6/15/17
 # -----------------------------------------------------------------------------
 # variables
 adminUser="$(dscl . list /Users UniqueID | awk '$2 == 501 {print $1}')"
