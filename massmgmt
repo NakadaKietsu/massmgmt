@@ -7,6 +7,11 @@
 # define admin user
 adminUser="$(dscl . list /Users UniqueID | awk '$2 == 501 {print $1}')"
 
+# log file location
+logFile="/Users/$adminUser/Library/Logs/massmgmt/massmgmtLog.txt"
+starDate="$(date)"
+hostName="$(hostname)"
+
 # define location of help page
 helpPage="/usr/local/massmgmt/help.txt"
 
@@ -28,11 +33,25 @@ if [ "$1" == "flushLogs" ] ; then
     rm -rf "$logDir"
     mkdir "$logDir"
 else
+    echo >> "$logFile"
+    echo "$starDate -- $hostName ----" >> "$logFile"
+    echo >> "$logFile"
+    echo "$starDate --- Running autoUpdate" >> "$logFile"
     $binLoc/autoUpdate
+   
+   
     $binLoc/chrome
+    
+    
     $binLoc/enableARD
+    
+    
     $binLoc/enableSSH
+    
+    
     $binLoc/setHostname
+    
+    
     $binLoc/setTimezone
 fi
 exit
