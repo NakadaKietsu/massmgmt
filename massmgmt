@@ -4,6 +4,7 @@
 #                 launchd-based macOS desired-state management
 #                           Last Edited: 6/15/17
 # -----------------------------------------------------------------------------
+# variables -------------------------------------------------------------------
 # define admin user
 adminUser="$(dscl . list /Users UniqueID | awk '$2 == 501 {print $1}')"
 
