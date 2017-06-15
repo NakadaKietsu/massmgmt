@@ -6,7 +6,7 @@
 # -----------------------------------------------------------------------------
 # variables
 adminUser="$(dscl . list /Users UniqueID | awk '$2 == 501 {print $1}')"
-logFile="/Users/$adminUser/Library/Logs/massmgmt/enableARDLog.txt"
+logFile="/Users/$adminUser/Library/Logs/massmgmt/autoUpdateLog.txt"
 starDate="$(date)"
 hostName="$(hostname)"
 
