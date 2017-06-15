@@ -54,6 +54,11 @@ else
     
     echo "$starDate --- Running setTimezone" >> "$logFile"
     $binLoc/setTimezone
+    
+    echo >> "$logFile"
+    echo "$starDate --- Exiting" >> "$logFile"
+    echo >> "$logFile"
+    echo "$starDate -- $hostName ----" >> "$logFile"
 fi
 exit
 # -----------------------------------------------------------------------------
