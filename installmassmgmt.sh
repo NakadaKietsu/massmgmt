@@ -33,7 +33,7 @@ cp setTimezone "$copyLoc"
 # /usr/local/massmgmt/sbin --------------------
 copyLoc="/usr/local/massmgmt/sbin"
 cd /tmp/massmgmt
-cp $file1 "$copyLoc"
+#cp $file1 "$copyLoc"
 
 # sudo chmod ----------------------------------
 cd /usr/local/massmgmt/bin
@@ -44,15 +44,15 @@ sudo chmod +x enableARD
 sudo chmod +x setHostname
 sudo chmod +x setTimezone
 
-cd /usr/local/massmgmt/sbin
+#cd /usr/local/massmgmt/sbin
 
 # chmod ---------------------------------------
-cd /usr/local/massmgmt/bin
+#cd /usr/local/massmgmt/bin
 
-cd /usr/local/massmgmt/sbin
+#cd /usr/local/massmgmt/sbin
 
 # move daemon into place
-cp org.massmgmt.plist /Library/LaunchDaemons
+sudo cp /tmp/massmgmt/org.massmgmt.plist /Library/LaunchDaemons
 
 # create alias to be able to run massmgmt from the command line
 ln -s '/usr/local/massmgmt/massmgmt' '/usr/local/bin/'
