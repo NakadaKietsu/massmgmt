@@ -2,7 +2,7 @@
 # -----------------------------------------------------------------------------
 # autoUpdateCheck.sh
 # Check to see if auto updates are enabled and if not, enable them
-# Last Edited: 6/6/17
+# Last Edited: 6/14/17
 # -----------------------------------------------------------------------------
 # variables
 adminUser="$(dscl . list /Users UniqueID | awk '$2 == 501 {print $1}')"
