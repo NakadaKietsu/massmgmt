@@ -52,7 +52,7 @@ cd /usr/local/massmgmt/bin
 cd /usr/local/massmgmt/sbin
 
 # move daemon into place
-cp org.massmgmt.rsu57 /Library/LaunchDaemons
+cp org.massmgmt.plist /Library/LaunchDaemons
 
 # create alias to be able to run massmgmt from the command line
 ln -s '/usr/local/massmgmt/massmgmt' '/usr/local/bin/'
