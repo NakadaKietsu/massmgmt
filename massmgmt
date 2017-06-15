@@ -21,6 +21,8 @@ logDir="/Users/$adminUser/Library/Logs/massmgmt"
 # define bin location for scripts
 binLoc="/usr/local/massmgmt/bin"
 
+# add phone home for text data of status or log aggregation in later versions
+
 # ----------list functions and packaged scripts that massmgmt can call---------
 #/usr/local/massmgmt/bin/autoUpdate
 #/usr/local/massmgmt/bin/chrome
@@ -30,31 +32,43 @@ binLoc="/usr/local/massmgmt/bin"
 #/usr/local/massmgmt/bin/setTimezone
 # -----------------------------------------------------------------------------
 if [ "$1" == "flushLogs" ] ; then
-    rm -rf "$logDir"
-    mkdir "$logDir"
+    printf "Are you sure you want to flush the log directory? (y/n) -> "
+    read A
+    if [ "$A" == "n" ] ; then
+        exit
+    elif [ "$A" == "y" ] ; then
+        echo "Removing $logDir"
+        rm -rf "$logDir"
+        mkdir "$logDir"
+        echo "Logs flushed"
+        exit
+    else
+        echo "Invalid option"
+        exit
+    fi
 else
     echo >> "$logFile"
     echo "$starDate -- $hostName ----" >> "$logFile"
     echo >> "$logFile"
-    
+    # run autoUpdate script
     echo "$starDate --- Running autoUpdate" >> "$logFile"
     $binLoc/autoUpdate
-   
+    # run chrome update script
     echo "$starDate --- Running chrome" >> "$logFile"
     $binLoc/chrome
-    
+    # run enableARD script
     echo "$starDate --- Running enableARD" >> "$logFile"
     $binLoc/enableARD
-    
+    # run enableSSH script
     echo "$starDate --- Running enableARD" >> "$logFile"
     $binLoc/enableSSH
-    
+    # run setHostname script
     echo "$starDate --- Running setHostname" >> "$logFile"
     $binLoc/setHostname
-    
+    # run setTimezone script
     echo "$starDate --- Running setTimezone" >> "$logFile"
     $binLoc/setTimezone
-    
+    # close out log
     echo >> "$logFile"
     echo "$starDate --- Exiting" >> "$logFile"
     echo >> "$logFile"
