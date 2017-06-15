@@ -36,22 +36,23 @@ else
     echo >> "$logFile"
     echo "$starDate -- $hostName ----" >> "$logFile"
     echo >> "$logFile"
+    
     echo "$starDate --- Running autoUpdate" >> "$logFile"
     $binLoc/autoUpdate
    
-   
+    echo "$starDate --- Running chrome" >> "$logFile"
     $binLoc/chrome
     
-    
+    echo "$starDate --- Running enableARD" >> "$logFile"
     $binLoc/enableARD
     
-    
+    echo "$starDate --- Running enableARD" >> "$logFile"
     $binLoc/enableSSH
     
-    
+    echo "$starDate --- Running setHostname" >> "$logFile"
     $binLoc/setHostname
     
-    
+    echo "$starDate --- Running setTimezone" >> "$logFile"
     $binLoc/setTimezone
 fi
 exit
