@@ -41,12 +41,6 @@ cp enableARD "$copyLoc" >> "$logFile"
 cp setHostname "$copyLoc" >> "$logFile"
 cp setTimezone "$copyLoc" >> "$logFile"
 
-# /usr/local/massmgmt/sbin --------------------
-copyLoc="/usr/local/massmgmt/sbin"
-echo "Copying scripts to $copyLoc" >> "$logFile"
-cd /tmp/massmgmt >> "$logFile"
-#cp $file1 "$copyLoc"
-
 # sudo chmod ----------------------------------
 cd /usr/local/massmgmt/bin
 echo "CHMOD scripts" >> "$logFile"
@@ -56,13 +50,6 @@ sudo chmod +x enableSSH >> "$logFile"
 sudo chmod +x enableARD >> "$logFile"
 sudo chmod +x setHostname >> "$logFile"
 sudo chmod +x setTimezone >> "$logFile"
-
-#cd /usr/local/massmgmt/sbin
-
-# chmod ---------------------------------------
-#cd /usr/local/massmgmt/bin
-
-#cd /usr/local/massmgmt/sbin
 
 # move daemon into place
 echo "Moving daemon into /Library/LaunchDaemons" >> "$logFile"
