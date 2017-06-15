@@ -2,7 +2,7 @@
 # -----------------------------------------------------------------------------
 #                                massmgmt
 #                 launchd-based macOS desired-state management
-#                           Last Edited: 6/13/17
+#                           Last Edited: 6/15/17
 # -----------------------------------------------------------------------------
 # define admin user
 adminUser="$(dscl . list /Users UniqueID | awk '$2 == 501 {print $1}')"
@@ -39,6 +39,7 @@ if [ "$1" == "flushLogs" ] ; then
     elif [ "$A" == "y" ] ; then
         echo "Removing $logDir"
         rm -rf "$logDir"
+        echo "Rebuilding the log directory at $logDir"
         mkdir "$logDir"
         echo "Logs flushed"
         exit
