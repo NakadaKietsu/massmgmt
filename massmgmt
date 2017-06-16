@@ -107,6 +107,8 @@ elif [ "$1" == "uninstall" ] ; then
     /usr/local/massmgmt/sbin/uninstallmassmgmt.sh
 elif [ "$1" == "rmProfiles" ] ; then
     rmProfiles
+elif [ "$1" == "installProfiles" ] ; then
+    installProfiles
 else
     massmgmtRun
 fi
