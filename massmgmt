@@ -85,7 +85,15 @@ function flushLogs {
 
 function rmProfiles {
     echo "Removing all configuration profiles installed on this computer."
+    profiles -H
+    profiles -C
+    profiles -P
     sudo profiles -D
+}
+
+function installProfiles {
+    echo "Installing configuration profiles stored in /usr/local/massmgmt/mconfig"
+    
 }
 
 # -----------------------------------------------------------------------------
