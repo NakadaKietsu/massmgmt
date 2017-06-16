@@ -26,31 +26,15 @@ binLoc="/usr/local/massmgmt/bin"
 
 # ----------list functions and packaged scripts that massmgmt can call---------
 #/usr/local/massmgmt/bin/autoUpdate
+#/usr/local/massmgmt/bin/checkChrome.py
 #/usr/local/massmgmt/bin/chrome
 #/usr/local/massmgmt/bin/enableARD
 #/usr/local/massmgmt/bin/enableSSH
 #/usr/local/massmgmt/bin/setHostname
 #/usr/local/massmgmt/bin/setTimezone
 # -----------------------------------------------------------------------------
-if [ "$1" == "flushLogs" ] ; then
-    printf "Are you sure you want to flush the log directory? (y/n) -> "
-    read A
-    if [ "$A" == "n" ] ; then
-        exit
-    elif [ "$A" == "y" ] ; then
-        echo "Removing $logDir"
-        rm -rf "$logDir"
-        echo "Rebuilding the log directory at $logDir"
-        mkdir "$logDir"
-        echo "Logs flushed"
-        exit
-    else
-        echo "Invalid option"
-        exit
-    fi
-elif [ "$1" == "uninstall" ] ; then
-    /usr/local/massmgmt/sbin/uninstallmassmgmt.sh
-else
+# functions
+function massmgmtRun {
     echo >> "$logFile"
     echo "$starDate -- $hostName ----" >> "$logFile"
     echo >> "$logFile"
@@ -77,6 +61,35 @@ else
     echo "$starDate --- Exiting" >> "$logFile"
     echo >> "$logFile"
     echo "$starDate -- $hostName ----" >> "$logFile"
+    exit
+}
+
+function flushLogs {
+    printf "Are you sure you want to flush the log directory? (y/n) -> "
+    read A
+    if [ "$A" == "n" ] ; then
+        exit
+    elif [ "$A" == "y" ] ; then
+        echo "Removing $logDir"
+        rm -rf "$logDir"
+        echo "Rebuilding the log directory at $logDir"
+        mkdir "$logDir"
+        echo "Logs flushed"
+        exit
+    else
+        echo "Invalid option"
+        exit
+    fi
+}
+
+# -----------------------------------------------------------------------------
+
+if [ "$1" == "flushLogs" ] ; then
+    flushLogs
+elif [ "$1" == "uninstall" ] ; then
+    /usr/local/massmgmt/sbin/uninstallmassmgmt.sh
+else
+    massmgmtRun
 fi
 exit
 # -----------------------------------------------------------------------------
