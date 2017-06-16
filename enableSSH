@@ -15,40 +15,39 @@ sshCheck="$(sudo systemsetup getremotelogin | awk '/Remote/ {print $(3) }')"
 # Script Contents -------------------------------------------------------------
 if [ "$sshCheck" == "On" ] ; then
     echo >> "$logFile"
-    echo "$starDate -- $hostName ----" >> "$logFile"
-    echo "$starDate --- SSH was already set to --> On" >> "$logFile"
+    echo "---- $starDate --- $hostName ----" >> "$logFile"
+    echo "SSH was already set to --> On" >> "$logFile"
     echo "Exiting" >> "$logFile"
+    echo "---- $starDate --- $hostName ----" >> "$logFile"
     exit
 elif [ "$sshCheck" == "Off" ] ; then
     echo >> "$logFile"
-    echo "$starDate -- $hostName ----" >> "$logFile"
-    echo "$starDate --- SSH --> Off" >> "$logFile"
+    echo "---- $starDate --- $hostName ----" >> "$logFile"
+    echo "SSH --> Off" >> "$logFile"
     userID="$(/usr/bin/dscl localhost -read /Local/Default/Users/$targetUsername | grep GeneratedUID | awk '{print $2}')"
     if [ "$userID" != "" ];then
-        echo "$starDate --- Granting SSH Access for $targetUsername with GUID $userID" >> "$logFile"
+        echo "Granting SSH Access for $targetUsername with GUID $userID" >> "$logFile"
         sudo /usr/bin/dscl localhost -create /Local/Default/Groups/com.apple.access_ssh >>"$logFile"
         sudo /usr/bin/dscl localhost -append /Local/Default/Groups/com.apple.access_ssh GroupMembership "$adminUser" >> "$logFile"
         sudo /usr/bin/dscl localhost -append /Local/Default/Groups/com.apple.access_ssh GroupMembers "$userID" >> "$logFile"
         sudo /usr/bin/dscl localhost -append /Local/Default/Groups/com.apple.access_ssh RealName 'Remote Login Group' >> "$logFile"
         sudo /usr/bin/dscl localhost -append /Local/Default/Groups/com.apple.access_ssh PrimaryGroupID 104 >> "$logFile"
         sudo systemsetup setremotelogin on >> "$logFile"
-        echo "$starDate --- SSH set --> On" >> "$logFile"
+        echo "SSH set --> On" >> "$logFile"
         echo "Exiting" >> "$logFile"
-        echo >> "$logFile"
-        echo "$starDate -- $hostName ----" >> "$logFile"
+        echo "---- $starDate --- $hostName ----" >> "$logFile"
         exit
     else
         echo >> "$logFile"
-        echo "$starDate -- $hostName ----" >> "$logFile"
-        echo "$starDate --- No record was found for $adminUser" >> "$logFile"
+        echo "---- $starDate --- $hostName ----" >> "$logFile"
+        echo "No record was found for $adminUser" >> "$logFile"
+        echo "---- $starDate --- $hostName ----" >> "$logFile"
     fi
 else
     echo >> "$logFile"
-    echo "$starDate -- $hostName ----" >> "$logFile"
-    echo >> "$logFile"
-    echo "$starDate --- Failed, exiting" >> "$logFile"
-    echo >> "$logFile"
-    echo "$starDate -- $hostName ----" >> "$logFile"
+    echo "---- $starDate --- $hostName ----" >> "$logFile"
+    echo "Failed, exiting" >> "$logFile"
+    echo "---- $starDate --- $hostName ----" >> "$logFile"
     exit
 fi
 exit
