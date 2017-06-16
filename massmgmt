@@ -104,7 +104,7 @@ function installProfiles {
     elif [ "B" == "y" ] ; then
         echo "Installing all configuration profiles stored in /usr/local/massmgmt/mconfig for $manageUser"
         cd "$profLoc"
-        ls -l | awk '/drwxr-xr-x/ {print $(9) }' >> "$profLoc/profiles.txt"
+        ls -l | awk '/-rw/ {print $(9) }' >> "$profLoc/profiles.txt"
         cat "$profLoc/profiles.txt" | while read line
         do
             profiles -I "$profLoc/$line"
