@@ -95,8 +95,23 @@ function rmProfiles {
 }
 
 function installProfiles {
-    echo "Installing configuration profiles stored in /usr/local/massmgmt/mconfig"
-    
+    echo "Configuration profiles can only be installed for the current user. If you are admin,"
+    echo "Log in as the managed user to use this tool"
+    printf "Continue? (y/n) -> "
+    read B
+    if [ "$B" == "n" ] ; then
+        exit
+    elif [ "B" == "y" ] ; then
+        echo "Installing all configuration profiles stored in /usr/local/massmgmt/mconfig for $manageUser"
+        cd "$profLoc"
+        ls -l | awk '/drwxr-xr-x/ {print $(9) }' >> "$profLoc/profiles.txt"
+        cat "$profLoc/profiles.txt" | while read line
+        do
+            profiles -I "$profLoc/$line"
+        done
+    else
+        exit
+    fi
 }
 
 # -----------------------------------------------------------------------------
