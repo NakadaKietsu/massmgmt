@@ -8,6 +8,9 @@
 # define admin user
 adminUser="$(dscl . list /Users UniqueID | awk '$2 == 501 {print $1}')"
 
+# define managed user
+manageUser="$(dscl . list /Users UniqueID | awk '$2 == 502 {print $1}')"
+
 # log file location
 logFile="/Users/$adminUser/Library/Logs/massmgmt/massmgmtLog.txt"
 starDate="$(date)"
