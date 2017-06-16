@@ -48,6 +48,8 @@ if [ "$1" == "flushLogs" ] ; then
         echo "Invalid option"
         exit
     fi
+elif [ "$1" == "uninstall" ] ; then
+    /usr/local/massmgmt/sbin/uninstallmassmgmt.sh
 else
     echo >> "$logFile"
     echo "$starDate -- $hostName ----" >> "$logFile"
