@@ -22,6 +22,9 @@ logDir="/Users/$adminUser/Library/Logs/massmgmt"
 # define bin location for scripts
 binLoc="/usr/local/massmgmt/bin"
 
+# define directory for configuration profiles
+profLoc="/usr/local/massmgmt/mconfig"
+
 # add phone home for text data of status or log aggregation in later versions
 
 # ----------list functions and packaged scripts that massmgmt can call---------
