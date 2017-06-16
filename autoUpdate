@@ -62,9 +62,7 @@ if [ "$sysDataFiles2" == "0;" ] ; then
     echo "Setting install system data files p2 --> On" >> "$logFile"
     sudo defaults write /Library/Preferences/com.apple.SoftwareUpdate ConfigDataInstall -bool TRUE >> "$logFile"
 fi
-echo >> "$logFile"
 echo "All parameters set to 1, exiting" >> "$logFile"
-echo >> "$logFile"
 sudo echo "---- $starDate --- $hostName ----" >> "$logFile"
 exit
 # -----------------------------------------------------------------------------
