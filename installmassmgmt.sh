@@ -14,7 +14,7 @@ hostName="$(hostname)"
 # -----------------------------------------------------------------------------
 # Script Contents -------------------------------------------------------------
 
-echo "$starDate -- $hostName ----" >> "$logFile"
+echo "---- $starDate --- $hostName ----" >> "$logFile"
 echo >> "$logFile"
 
 # make directories
@@ -67,6 +67,6 @@ sudo cp /tmp/massmgmt/org.massmgmt.plist /Library/LaunchDaemons >> "$logFile"
 # create alias to be able to run massmgmt from the command line
 ln -s '/usr/local/massmgmt/massmgmt' '/usr/local/bin/' >> "$logFile"
 echo >> "$logFile"
-echo "$starDate -- $hostName ----" >> "$logFile"
+echo "---- $starDate --- $hostName ----" >> "$logFile"
 exit
 # -----------------------------------------------------------------------------
