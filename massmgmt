@@ -41,32 +41,33 @@ profLoc="/usr/local/massmgmt/mconfig"
 # -----------------------------------------------------------------------------
 # functions
 function massmgmtRun {
-    echo >> "$logFile"
-    echo "$starDate -- $hostName ----" >> "$logFile"
-    echo >> "$logFile"
+    sudo -v
+    sudo echo >> "$logFile"
+    sudo echo "$starDate -- $hostName ----" >> "$logFile"
+    sudo echo >> "$logFile"
     # run autoUpdate script
-    echo "$starDate --- Running autoUpdate" >> "$logFile"
+    sudo echo "$starDate --- Running autoUpdate" >> "$logFile"
     $binLoc/autoUpdate
     # run chrome update script
-    echo "$starDate --- Running check chrome" >> "$logFile"
+    sudo echo "$starDate --- Running check chrome" >> "$logFile"
     $binLoc/checkChrome.py
     # run enableARD script
-    echo "$starDate --- Running enableARD" >> "$logFile"
+    sudo echo "$starDate --- Running enableARD" >> "$logFile"
     $binLoc/enableARD
     # run enableSSH script
-    echo "$starDate --- Running enableARD" >> "$logFile"
+    sudo echo "$starDate --- Running enableARD" >> "$logFile"
     $binLoc/enableSSH
     # run setHostname script
-    echo "$starDate --- Running setHostname" >> "$logFile"
+    sudo echo "$starDate --- Running setHostname" >> "$logFile"
     $binLoc/setHostname
     # run setTimezone script
-    echo "$starDate --- Running setTimezone" >> "$logFile"
+    sudo echo "$starDate --- Running setTimezone" >> "$logFile"
     $binLoc/setTimezone
     # close out log
-    echo >> "$logFile"
-    echo "$starDate --- Exiting" >> "$logFile"
-    echo >> "$logFile"
-    echo "$starDate -- $hostName ----" >> "$logFile"
+    sudo echo >> "$logFile"
+    sudo echo "$starDate --- Exiting" >> "$logFile"
+    sudo echo >> "$logFile"
+    sudo echo "$starDate -- $hostName ----" >> "$logFile"
 }
 
 function flushLogs {
