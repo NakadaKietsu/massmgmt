@@ -60,6 +60,11 @@ sudo chmod +x setTimezone >> "$logFile"
 chmod +x checkChrome.py >> "$logFile"
 sudo chmod +x uninstallmassmgmt.sh >> "$logFile"
 
+# move help.txt into place
+echo "Moving help.txt into /usr/local/massmgmt" >> "$logFile"
+cd /tmp/massmgmt
+cp help.txt /usr/local/massmgmt >> "$logFile"
+
 # move daemon into place
 echo "Moving daemon into /Library/LaunchDaemons" >> "$logFile"
 sudo cp /tmp/massmgmt/org.massmgmt.plist /Library/LaunchDaemons >> "$logFile"
