@@ -125,6 +125,8 @@ elif [ "$1" == "rmProfiles" ] ; then
     rmProfiles
 elif [ "$1" == "installProfiles" ] ; then
     installProfiles
+elif [ "$1" == "help" ] ; then
+    cat /usr/local/massmgmt/help.txt
 else
     massmgmtRun
 fi
