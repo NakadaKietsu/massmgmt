@@ -33,7 +33,7 @@ else
     echo "$starDate --- giving $adminUser correct privileges ..." >> "$logFile"
     sudo /System/Library/CoreServices/RemoteManagement/ARDAgent.app/Contents/Resources/kickstart -configure -access -on -privs $privs -users $adminUser >> "$logFile"
     echo >> "$logFile"
-    echo "starDate -- $hostName ----" >> "$logFile"
+    echo "$starDate -- $hostName ----" >> "$logFile"
     exit
 fi
 echo >> "$logFile"
