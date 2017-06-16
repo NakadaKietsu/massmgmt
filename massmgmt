@@ -37,7 +37,6 @@ profLoc="/usr/local/massmgmt/mconfig"
 #/usr/local/massmgmt/bin/setTimezone
 # -----------------------------------------------------------------------------
 # functions
-
 function massmgmtRun {
     echo >> "$logFile"
     echo "$starDate -- $hostName ----" >> "$logFile"
