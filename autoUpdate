@@ -19,53 +19,52 @@ sysDataFiles2="$(sudo defaults read /Library/Preferences/com.apple.SoftwareUpdat
 # -----------------------------------------------------------------------------
 # Script Contents -------------------------------------------------------------
 echo >> "$logFile"
-echo "$starDate -- $hostName ----" >> "$logFile"
-echo >> "$logFile"
+sudo echo "---- $starDate --- $hostName ----" >> "$logFile"
 
 # parameter that specifies scheduled checking for updates
 if [ "$autoCheckEnabled" == "0;" ] ; then
     # make sure checking for software updates is on
-    echo "$starDate --- Setting Software Update scheduled checks --> On" >> "$logFile"
+    echo "Setting Software Update scheduled checks --> On" >> "$logFile"
     sudo softwareupdate --schedule on >> "$logFile"
 fi
 # -----------------------------------
 # parameter for automatic app updates
 if [ "$commerceAutoUpdate" == "0;" ] ; then
     # enable automatic app updates
-    echo "$starDate --- Setting automatic app updates --> On" >> "$logFile"
+    echo "Setting automatic app updates --> On" >> "$logFile"
     sudo defaults write /Library/Preferences/com.apple.commerce AutoUpdate -bool TRUE >> "$logFile"
 fi
 # -----------------------------------
 # parameter for macOS updates
 if [ "$autoMacUpdate" == "0;" ] ; then
     # enable automatic macOS updates
-    echo "$starDate --- Setting automatic macOS updates --> On" >> "$logFile"
+    echo "Setting automatic macOS updates --> On" >> "$logFile"
     sudo defaults write /Library/Preferences/com.apple.commerce AutoUpdateRestartRequired -bool TRUE >> "$logFile"
 fi
 # -----------------------------------
 # parameter for automatic download of available updates
 if [ "$autoMacDownload" == "0;" ] ; then
     # enable automatic download of updates
-    echo "$starDate --- Setting automatic download --> On" >> "$logFile"
+    echo "Setting automatic download --> On" >> "$logFile"
     sudo defaults write /Library/Preferences/com.apple.SoftwareUpdate AutomaticDownload -bool TRUE >> "$logFile"
 fi
 # -----------------------------------
 # first parameter as part of "install system files" option
 if [ "$sysDataFiles1" == "0;" ] ; then
     # part 1 of enabling install system data files
-    echo "$starDate --- Setting install system data files p1 --> On" >> "$logFile"
+    echo "Setting install system data files p1 --> On" >> "$logFile"
     sudo defaults write /Library/Preferences/com.apple.SoftwareUpdate CriticalUpdateInstall -bool TRUE >> "$logFile"
 fi
 # -----------------------------------
 # second parameter as part of "install system files" option
 if [ "$sysDataFiles2" == "0;" ] ; then
     # part 2 of enabling install system data files
-    echo "$starDate --- Setting install system data files p2 --> On" >> "$logFile"
+    echo "Setting install system data files p2 --> On" >> "$logFile"
     sudo defaults write /Library/Preferences/com.apple.SoftwareUpdate ConfigDataInstall -bool TRUE >> "$logFile"
 fi
 echo >> "$logFile"
-echo "$starDate --- All parameters set to 1, exiting" >> "$logFile"
+echo "All parameters set to 1, exiting" >> "$logFile"
 echo >> "$logFile"
-echo "$starDate -- $hostName ----" >> "$logFile"
+sudo echo "---- $starDate --- $hostName ----" >> "$logFile"
 exit
 # -----------------------------------------------------------------------------
