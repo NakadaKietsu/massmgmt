@@ -27,9 +27,5 @@ else
     echo "Computer hostname set to $serial, exiting" >> "$logFile"
     echo "---- $starDate --- $hostName ----" >> "$logFile"
 fi
-echo >> "$logFile"
-echo "---- $starDate --- $hostName ----" >> "$logFile"
-echo "Failed, exiting" >> "$logFile"
-echo "---- $starDate --- $hostName ----" >> "$logFile"
 exit
 # -----------------------------------------------------------------------------
