@@ -22,6 +22,7 @@ echo "Generating directories" >> "$logFile"
 mkdir /usr/local/massmgmt >> "$logFile"
 mkdir /usr/local/massmgmt/bin >> "$logFile"
 mkdir /usr/local/massmgmt/sbin >> "$logFile"
+mkdir /usr/local/massmgmt/mconfig >> "$logFile"
 mkdir "$logDir" >> "$logFile"
 echo "Directories generated" >> "$logFile"
 
