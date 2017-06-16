@@ -37,6 +37,7 @@ profLoc="/usr/local/massmgmt/mconfig"
 #/usr/local/massmgmt/bin/setTimezone
 # -----------------------------------------------------------------------------
 # functions
+
 function massmgmtRun {
     echo >> "$logFile"
     echo "$starDate -- $hostName ----" >> "$logFile"
@@ -64,7 +65,6 @@ function massmgmtRun {
     echo "$starDate --- Exiting" >> "$logFile"
     echo >> "$logFile"
     echo "$starDate -- $hostName ----" >> "$logFile"
-    exit
 }
 
 function flushLogs {
@@ -81,8 +81,12 @@ function flushLogs {
         exit
     else
         echo "Invalid option"
-        exit
     fi
+}
+
+function rmProfiles {
+    echo "Removing all configuration profiles installed on this computer."
+    sudo profiles -D
 }
 
 # -----------------------------------------------------------------------------
@@ -91,6 +95,8 @@ if [ "$1" == "flushLogs" ] ; then
     flushLogs
 elif [ "$1" == "uninstall" ] ; then
     /usr/local/massmgmt/sbin/uninstallmassmgmt.sh
+elif [ "$1" == "rmProfiles" ] ; then
+    rmProfiles
 else
     massmgmtRun
 fi
