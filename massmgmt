@@ -96,7 +96,7 @@ function rmProfiles {
 
 function installProfiles {
     echo "Configuration profiles can only be installed for the current user. If you are admin,"
-    echo "Log in as the managed user to use this tool"
+    echo "log in as the managed user to use this tool"
     printf "Continue? (y/n) -> "
     read B
     if [ "$B" == "n" ] ; then
