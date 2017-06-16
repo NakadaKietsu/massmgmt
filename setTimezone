@@ -16,31 +16,23 @@ currentTimeZone="$(sudo /usr/sbin/systemsetup -gettimezone | awk '/Time Zone/ {p
 # Script Contents -------------------------------------------------------------
 if [ "$currentTimeZone" == "$timeZone" ] ; then
     echo >> "$logFile"
-    echo "$starDate -- $hostName ----" >> "$logFile"
-    echo >> "$logFile"
-    echo "$starDate --- System timezone already set to $timeZone, exiting" >> "$logFile"
-    echo >> "$logFile"
-    echo "$starDate -- $hostName ----" >> "$logFile"
+    echo "---- $starDate --- $hostName ----" >> "$logFile"
+    echo "System timezone already set to $timeZone, exiting" >> "$logFile"
+    echo "---- $starDate --- $hostName ----" >> "$logFile"
     exit
 else
     echo >> "$logFile"
-    echo "$starDate -- $hostName ----" >> "$logFile"
-    echo >> "$logFile"
-    
-    echo "$starDate --- Setting timezone to $timeZone" >> "$logFile"
+    echo "---- $starDate --- $hostName ----" >> "$logFile"  
+    echo "Setting timezone to $timeZone" >> "$logFile"
     sudo /usr/sbin/systemsetup -settimezone "$timeZone" >> "$logFile"
     /usr/bin/killall SystemUIServer >> "$logFile"
-    
-    echo "$starDate --- Timezone set to $timeZone, exiting" >> "$logFile"
-    echo >> "$logFile"
-    echo "$starDate -- $hostName ----" >> "$logFile"
+    echo "Timezone set to $timeZone, exiting" >> "$logFile"
+    echo "---- $starDate --- $hostName ----" >> "$logFile"
     exit
 fi
 echo >> "$logFile"
-echo "$starDate -- $hostName ----" >> "$logFile"
-echo >> "$logFile"
-echo "$starDate --- Failed, exiting" >> "$logFile"
-echo >> "$logFile"
-echo "$starDate -- $hostName ----" >> "$logFile"
+echo "---- $starDate --- $hostName ----" >> "$logFile"
+echo "Failed, exiting" >> "$logFile"=
+echo "---- $starDate --- $hostName ----" >> "$logFile"
 exit
 # -----------------------------------------------------------------------------
