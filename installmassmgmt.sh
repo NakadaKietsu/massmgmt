@@ -42,7 +42,12 @@ cp setHostname "$copyLoc" >> "$logFile"
 cp setTimezone "$copyLoc" >> "$logFile"
 cp checkChrome.py "$copyLoc" >> "$logFile"
 
-# sudo chmod ----------------------------------
+# /usr/local/massmgmt/sbin ---------------------
+copyLoc="/usr/local/massmgmt/sbin"
+cd /tmp/massmgmt >> "$logFile"
+cp uninstallmassmgmt.sh "$copyLoc" >> "$logFile"
+
+# chmod ----------------------------------------
 cd /usr/local/massmgmt/bin
 echo "CHMOD scripts" >> "$logFile"
 sudo chmod +x autoUpdate >> "$logFile"
@@ -52,6 +57,7 @@ sudo chmod +x enableARD >> "$logFile"
 sudo chmod +x setHostname >> "$logFile"
 sudo chmod +x setTimezone >> "$logFile"
 chmod +x checkChrome.py >> "$logFile"
+sudo chmod +x uninstallmassmgmt.sh >> "$logFile"
 
 # move daemon into place
 echo "Moving daemon into /Library/LaunchDaemons" >> "$logFile"
