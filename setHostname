@@ -15,29 +15,21 @@ serial="$(/usr/sbin/system_profiler SPHardwareDataType | /usr/bin/awk '/Serial\ 
 # Script Contents -------------------------------------------------------------
 if [ "$hostName" == "$serial" ] ; then
     echo >> "$logFile"
-    echo "$starDate -- $hostName ----" >> "$logFile"
-    echo >> "$logFile"
-    echo "$starDate --- The computer hostname is set to its serial number, exiting" >> "$logFile"
-    echo >> "$logFile"
-    echo "$starDate -- $hostName ----" >> "$logFile"
+    echo "---- $starDate --- $hostName ----" >> "$logFile"
+    echo "The computer hostname is set to its serial number, exiting" >> "$logFile"
+    echo "---- $starDate --- $hostName ----" >> "$logFile"
 else
     echo >> "$logFile"
-    echo "$starDate -- $hostName ----" >> "$logFile"
-    echo >> "$logFile"
-    
+    echo "---- $starDate --- $hostName ----" >> "$logFile"
     sudo scutil --set ComputerName $serial >> "$logFile"
     sudo scutil --set HostName $serial >> "$logFile"
     sudo scutil --set LocalHostName $serial >> "$logFile"
-    
-    echo "$starDate --- Computer hostname set to $serial, exiting" >> "$logFile"
-    echo >> "$logFile"
-    echo "$starDate -- $hostName ----" >> "$logFile"
+    echo "Computer hostname set to $serial, exiting" >> "$logFile"
+    echo "---- $starDate --- $hostName ----" >> "$logFile"
 fi
 echo >> "$logFile"
-echo "$starDate -- $hostName ----" >> "$logFile"
-echo >> "$logFile"
-echo "$starDate --- Failed, exiting" >> "$logFile"
-echo >> "$logFile"
-echo "$starDate -- $hostName ----" >> "$logFile"
+echo "---- $starDate --- $hostName ----" >> "$logFile"
+echo "Failed, exiting" >> "$logFile"
+echo "---- $starDate --- $hostName ----" >> "$logFile"
 exit
 # -----------------------------------------------------------------------------
